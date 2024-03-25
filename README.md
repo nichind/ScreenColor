@@ -4,6 +4,11 @@
 Simple Python library to get average color of monitor(s)
 
 
+## Installation
+
+```
+pip install screencolor
+```
 
 
 ## Usage/Examples
