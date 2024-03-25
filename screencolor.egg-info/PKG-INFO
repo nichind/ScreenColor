@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: screencolor
+Version: 1.0.0
+Summary: Simple Python library to get average color of monitor(s)
+Home-page: https://github.com/nichind/ScreenColor
+Author: nichind
+Author-email: nichinddev@gmail.com
+Project-URL: Documentation, https://github.com/nichind/ScreenColor
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE

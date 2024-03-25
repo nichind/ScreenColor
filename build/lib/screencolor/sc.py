@@ -18,15 +18,7 @@ class ScreenColorPickColorException(Exception):
 
 
 class ScreenColor:
-    def __init__(self, default_color = 0xFFFFFFF, monitor_id: int = -1, buffer_folder: str = os.getcwd() + '\\buffer\\', quality: int = 1, delete_after: bool = True):
-        """
-        ScreenColor class.
-
-        Params:
-            monitor_id: int (optional) Defaults to -1 (all monitors)
-            buffer_folder: str (optional) Defaults to /buffer/
-            delete_after: bool (optional) Defaults to True
-        """
+    def __init__(self, default_color = 0xFFFFFFF, monitor_id: int = -1, buffer_folder: str = os.getcwd() + '\\screencolor\\buffer\\', quality: int = 1, delete_after: bool = True):
         try:
             self.buffer_folder = buffer_folder
             self.quality = quality
@@ -48,7 +40,7 @@ class ScreenColor:
             return self.active_path
         except Exception as exc: raise ScreenColorTakeSSException(exc)
 
-    def get_color(self, delete_after: bool = True, rgb: bool = False):
+    def pick_color(self, delete_after: bool = True, rgb: bool = False):
         try:
             self.color_rgb = ColorThief(self.active_path).get_color(quality=self.quality)
             self.color_hex = '#{:02x}{:02x}{:02x}'.format(self.color_rgb[0], self.color_rgb[1], self.color_rgb[2])
@@ -56,23 +48,11 @@ class ScreenColor:
             return self.color_rgb if rgb else self.color_hex
         except Exception as exc: raise ScreenColorPickColorException(exc)
 
-    def get(self, rgb: bool = False):
-        """
-        Get current color.
-
-        :param rgb:
-        :return:
-        """
+    def refresh(self):
         self.take_ss()
-        return self.get_color(delete_after=self.delete_after, rgb=rgb)
+        self.pick_color(delete_after=self.delete_after)
 
-    def start_loop(self, delay_seconds: int = 1):
-        """
-        Start loop. You may want to call it with threading or multithreading.
-
-        :param delay_seconds:
-        :return:
-        """
+    def loop(self, delay_seconds: int = 1):
         while True:
-            self.get()
+            self.refresh()
             time.sleep(delay_seconds)

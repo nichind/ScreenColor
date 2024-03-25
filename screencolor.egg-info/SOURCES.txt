@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+screencolor/__init__.py
+screencolor/sc.py
+screencolor.egg-info/PKG-INFO
+screencolor.egg-info/SOURCES.txt
+screencolor.egg-info/dependency_links.txt
+screencolor.egg-info/requires.txt
+screencolor.egg-info/top_level.txt
